@@ -7,14 +7,14 @@ const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
     entry: './src/client/index.js',
-    mode: 'production',
 	output: {
      libraryTarget: 'var',
      library: 'Client'
-       },
-    optimization: {
+ },
+	optimization: {
    minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },
+    mode: 'production',
     module: {
         rules: [
             {
@@ -24,8 +24,8 @@ module.exports = {
             },
 			{
 				test: /\.scss$/,
-				//use: ['style-loader','css-loader','sass-loader']
-				use: [MiniCssExtractPlugin.loader, 'css-loader','sass-loader']
+				use: ['style-loader', 'css-loader','sass-loader']
+				//use: [MiniCssExtractPlugin.loader, 'css-loader','sass-loader']
 			}
         ]
     },
